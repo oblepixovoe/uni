@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>to-do list</title>
+    <style type="text/css">
+    	body{
+		    font-family: Arial, Helvetica, sans-serif;
+		    color:rgb(97, 97, 97);
+		    background-color: #F2F2F2;
+		}
+		b {
+		    font-size: 24px;
+		}
+		li{
+		    list-style-type: none;
+		}
+		button, button:active, button:focus  {
+		    border:none;
+		}
+
+		button, button:active, button:focus  {
+		    border:none;
+		}
+
+		.task-list__edit-button, .task-list__delete-button{
+		    color:rgb(92, 92, 92);
+		    transform: scale(1.5);
+		    font-weight: bold;
+		}
+		.tasks__header{
+		    display: grid;
+		    grid-template-columns: 1fr 1fr;
+		    grid-auto-rows: 2em;
+		    grid-gap: 8em;
+		    margin-left: 20px;
+		}
+		.tasks{
+		    width: 40%;
+		    margin: 30px 30px;
+		    padding: 15px 15px;
+		    background-color: rgb(242, 242, 242);
+		    box-shadow: 0px 13px 19px 10px rgba(34, 60, 80, 0.2);
+		}
+		.task-list__item{
+		    display: grid;
+		    grid-template-columns: repeat(2, 50px) 60% repeat(2, 40px);
+		    grid-template-rows: 20px 10px;
+		    padding-top: 10px; 
+		}
+		ul li:nth-child(odd){
+		    background: rgb(226, 226, 226);
+		}
+		.task-list__add-button{
+		    margin-left: 20px;
+		    font-size: 14px;
+		    color:rgb(97, 97, 97);
+		}
+		.task-list{
+		    padding-left: 10px;
+		}
+		.task-list__done{
+		    transform: scale(1.5);
+		}
+		.task-list__item--template {
+		    display: none;
+		}
+		ul li .task-list__description{
+		    text-decoration: none;
+		}
+		ul li input[type=checkbox]:checked ~ .task-list__description{
+		    text-decoration: line-through;
+		    color: rgb(169, 169, 169);
+		}
+
+		.task-form {
+		    display: none;
+		    width: 40%;
+		    padding: 15px 15px;
+		    box-shadow: 0px 13px 19px -2px rgba(34, 60, 80, 0.2);
+		    border-radius: 10px; 
+		}
+		.task-form.shown {
+		    display: block;
+		    right: 200px;
+		    position: absolute;
+		    top: 40px;
+
+		}
+		form label{
+		    font-size: 14px;
+		}
+		input[type=checkbox]{
+		    transform: scale(1.5);
+		}
+		.task-form__desc{
+		    margin: 7px 0 10px 0;
+		    width: 200px;
+		}
+		.task-form__close{
+		    width: 100px;
+		    padding: 5px;
+		    margin-top: 7px;
+		    border: 1px rgb(92, 92, 92) solid;
+		    border-radius: 20px;
+		    color:rgb(97, 97, 97);
+		}
+		.task-form__save{
+		    width: 100px;
+		    padding: 5px;
+		    margin-top: 7px;
+		    border: 1px rgb(97, 160, 208) solid;
+		    border-radius: 20px;
+		    color:white;
+		    background: rgb(97, 160, 208);
+		}
+
+    </style>
+  </head>
+  
+  <body>
+    <div class="todo-list">
+        <div class="tasks">    
+            <div class="tasks__header">
+                <b>Список задач</b>
+                <button type="button" class="task-list__add-button"><img src="add.png"> Добавить</button>
+            </div>
+            <ul class="task-list">
+                <li class="task-list__item">
+                    <input class="task-list__done" type="checkbox" name="">
+                    <span class="task-list__prio">📌</span>
+                    <span class="task-list__description">Задача 1</span>
+                    <button type="button" class="task-list__edit-button">🖊</button>
+                    <button type="button" class="task-list__delete-button">🗑</button>
+                </li>
+                <li class="task-list__item">
+                    <input class="task-list__done" type="checkbox" name="">
+                    <span class="task-list__prio">📌</span>
+                    <span class="task-list__description">Задача 2</span>
+                    <button type="button" class="task-list__edit-button">🖊</button>
+                    <button type="button" class="task-list__delete-button">🗑</button>
+                </li>
+                <li class="task-list__item">
+                    <input class="task-list__done" type="checkbox" name="">
+                    <span class="task-list__prio"></span>
+                    <span class="task-list__description">Задача 4</span>
+                    <button type="button" class="task-list__edit-button">🖊</button>
+                    <button type="button" class="task-list__delete-button">🗑</button>
+                </li>
+                <li class="task-list__item">
+                    <input class="task-list__done" type="checkbox" name="">
+                    <span class="task-list__prio"></span>
+                    <span class="task-list__description">Задача 8</span>
+                    <button type="button" class="task-list__edit-button">🖊</button>
+                    <button type="button" class="task-list__delete-button">🗑</button>
+                </li>
+            </ul>
+        </div>
+        <div class="task-form">
+            <form>
+                <b>Карточка задачи</b>
+                <br>
+                <label>Задача</label>
+                <br>
+                <input type="text" class="task-form__desc" name="description" placeholder="Описание задачи">
+                <br>
+                <label>
+                    <input type="checkbox" class="task-form__prio" name="prio">
+                    Высокий приоритет 📌
+                </label>
+                <br>
+                <button type="submit" class="task-form__save">Сохранить</button>
+                <button type="button" class="task-form__close">Отменить</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (() => {
+            let todoList = document.querySelector('.todo-list');
+            let addButton = todoList.querySelector('.task-list__add-button');
+            
+            let taskList = todoList.querySelector('.task-list');
+            let taskForm = todoList.querySelector('.task-form');
+            let form = todoList.querySelector('form');
+            let closeButton = taskForm.querySelector('.task-form__close');
+            
+            let formAction = '';
+            let formItem;
+
+            let editAction = e => {
+                let btn = e.target;
+                let item = btn.closest('.task-list__item');
+                let prio = item.querySelector('.task-list__prio');
+                let desc = item.querySelector('.task-list__description');
+                form.reset();
+                form.description.value = desc.textContent;
+                form.prio.checked = (prio.textContent !== '');
+                taskForm.classList.add('shown');
+                formAction = 'edit';
+                formItem = item;
+            }
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                switch (formAction) {
+                    case 'create':
+                        let item = taskList.firstElementChild.cloneNode(true);
+                        item.style.display = '';
+                        item.querySelector('.task-list__done').checked = false;
+                        item.querySelector('.task-list__description').textContent = form.description.value;
+                        item.querySelector('.task-list__prio').textContent = form.prio.checked ? '📌' : '';
+                        taskList.append(item);
+                        item.addEventListener('click', editAction);
+                        taskForm.classList.toggle('shown');
+                        form.reset();
+                        break;
+
+                    case 'edit':
+                        formItem.querySelector('.task-list__description').textContent = form.description.value;
+                        formItem.querySelector('.task-list__prio').textContent = form.prio.checked ? '📌' : '';
+                        break;
+                }
+            });
+
+            addButton.addEventListener('click', e => {
+                taskForm.classList.toggle('shown');
+                formAction = 'create'
+                form.reset();
+                formItem = null;
+            });
+
+            closeButton.addEventListener('click', e => {
+                taskForm.classList.remove('shown');
+            });
+        
+            let editButtons = todoList.querySelectorAll('.task-list__edit-button');
+
+            editButtons.forEach(btn => {
+                btn.addEventListener('click', editAction);
+            });
+            document.querySelector('.task-list').addEventListener('click', e => {
+                if  (e.target.className === 'task-list__delete-button'){
+                    let delTask = document.querySelectorAll('.task-list__item').length
+                    if (delTask >=2){
+                        e.target.closest('li').remove()
+                    }
+                }
+            });
+
+        })();
+    </script>
+  </body>
+</html>
