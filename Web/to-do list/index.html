@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Task list</title>
+		<link rel="icon" href="./favicon.svg"/>
+        <link type="text/css" href="style.css" rel="stylesheet">
+		<script src="script.js"></script>
+    </head>
+    <body>
+	<div id="example">
+		<li class="list_item">
+			<input class="done" type="checkbox">
+			<span class="priority">📌</span>
+			<span class="description"></span>
+			<button class="edit">✏</button>
+			<button class="delete">🗑</button>
+		</li>
+	</div>
+	<div class="todo_list">
+        <div class="tasks">   
+            <div class="tasks_header">
+                <b>Список задач ✔</b>
+                <button type="button" class="add_task">Добавить ➕</button>
+            </div>
+            <ul class="task_list">
+			
+                <li class="list_item">
+                    <input class="done" type="checkbox">
+                    <span class="priority">📌</span>
+                    <span class="description">Задача 1</span>
+                    <button type="button" class="edit">✏</button>
+                    <button type="button" class="delete">🗑</button>
+                </li>
+				<li class="list_item">
+                    <input class="done" type="checkbox">
+                    <span class="priority">📌</span>
+                    <span class="description">Задача 2</span>
+                    <button type="button" class="edit">✏</button>
+                    <button type="button" class="delete">🗑</button>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="task_form">
+            <form>
+                <b>Карточка задачи</b>
+                <input type="text" class="form_description" name="description" placeholder="Описание задачи">
+                <label>
+                    <input type="checkbox" class="form_priority" name="priority">
+                    Важное 📌
+                </label>
+                <button type="submit" class="save">Сохранить</button>
+                <button type="button" class="close">Закрыть</button>
+            </form>
+        </div>
+    </div>
+	</body>
+</html>
