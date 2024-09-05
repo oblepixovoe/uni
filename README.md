@@ -1,5 +1,5 @@
 <h2 align="center">Привет<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" width="32" height="32"/></h2>
-<h3 align="center">Я Яна, студентка 3-го курса прикладной информатики ИГУ</h3>
+<h3 align="center">Я Яна, студентка 4-го курса прикладной информатики ИГУ</h3>
 <hr>
 
 
